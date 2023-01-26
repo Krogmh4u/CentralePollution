@@ -3,18 +3,18 @@
 
 #include"Arduino.h"
 
-class AQSensor
+class AQSensor : public AirQualitySensor
 {
   public :
-    AQSensor(const int pin) : current_quality(-1)
+    AQSensor(const int pin) : AirQualitySensor(pin), current_quality(-1)
     {
-      this->m_sensor = new AirQualitySensor(pin);
-      this->m_sensor->init();
+      this->pin = pin;
+      this->init();
     }
 
     int getValue()
     {
-      this->current_quality = this->m_sensor->slope();
+      this->current_quality = this->slope();
       return current_quality;
     }
 
@@ -31,6 +31,6 @@ class AQSensor
     
 
   private : 
-    AirQualitySensor* m_sensor;
+    int pin;
     int current_quality;
 };

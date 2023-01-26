@@ -40,7 +40,7 @@ void loop() {
     communication->SendData("CO2", co2covSensor->GetCO2());
     communication->SendData("COV", co2covSensor->GetCOV());
   #else
-    Serial.println("airquality: %d", );
+    Serial.println("airquality: %d", airQualitySensor->getValue());
     Serial.println("CO2: %d", co2covSensor->GetCO2());
     Serial.println("COV: %d", co2covSensor->GetCOV());
   #endif
